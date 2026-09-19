@@ -1,0 +1,19 @@
+{
+  "name": "pass-it-on",
+  "version": "0.4.0",
+  "private": true,
+  "description": "Anonymous text chains. Add something, then pass it on.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.2.0",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.0.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

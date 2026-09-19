@@ -1,0 +1,4886 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+  name="viewport"
+  content="width=device-width,initial-scale=1"
+>
+
+<meta
+  name="theme-color"
+  content="#0b0b0f"
+>
+
+<title>Pass It On.</title>
+
+<style>
+
+:root {
+  --bg:#050608;
+  --panel:#0a0d10;
+  --card:#0b0f12;
+  --card-2:#0d1215;
+  --text:#f4f7f5;
+  --muted:#69747a;
+  --muted-2:#465056;
+  --border:rgba(255,255,255,.075);
+  --green:#ff7a00;
+  --cyan:#00d9ff;
+  --glow:rgba(255,122,0,.12);
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body {
+  min-height:100vh;
+  padding:20px;
+  background:
+    radial-gradient(
+      circle at 50% -12%,
+      rgba(0,217,255,.07),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 10% 30%,
+      rgba(255,122,0,.035),
+      transparent 28%
+    ),
+    var(--bg);
+
+  color:var(--text);
+
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  letter-spacing:.01em;
+}
+
+body::before {
+  content:"";
+
+  position:fixed;
+  inset:0;
+
+  pointer-events:none;
+
+  opacity:.035;
+
+  background-image:
+    linear-gradient(
+      rgba(255,255,255,.5) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    100% 4px;
+
+  mix-blend-mode:screen;
+}
+
+.app {
+  max-width:620px;
+
+  margin:auto;
+
+  padding:
+    12px 0 70px;
+}
+
+
+/* =========================================================
+   TOP NAV
+   ========================================================= */
+
+.top-nav {
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    space-between;
+
+  margin-bottom:34px;
+}
+
+.logo {
+  width:42px;
+  height:42px;
+
+  display:block;
+
+  border-radius:13px;
+
+  background:
+    #000
+    url("/pass-it-on-logo.png")
+    center / cover
+    no-repeat;
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
+  box-shadow:
+    0 0 22px
+    rgba(0,217,255,.08);
+
+  text-decoration:none;
+
+  overflow:hidden;
+}
+
+.discover-link {
+  display:flex;
+
+  align-items:center;
+
+  gap:7px;
+
+  color:#b9c1c4;
+
+  text-decoration:none;
+
+  border:
+    1px solid
+    var(--border);
+
+  background:
+    rgba(255,255,255,.025);
+
+  padding:
+    9px 13px;
+
+  border-radius:10px;
+
+  font-size:11px;
+
+  font-weight:850;
+
+  letter-spacing:.08em;
+
+  text-transform:uppercase;
+
+  transition:.18s ease;
+}
+
+.discover-link:hover {
+  background:
+    rgba(255,122,0,.06);
+
+  border-color:
+    rgba(255,122,0,.22);
+
+  color:#fff;
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+  text-align:center;
+
+  margin-bottom:24px;
+}
+
+.logo-main {
+  width:76px;
+  height:76px;
+
+  margin:
+    0 auto 18px;
+
+  border-radius:24px;
+
+  background:
+    #000
+    url("/pass-it-on-logo.png")
+    center / cover
+    no-repeat;
+
+  border:
+    1px solid
+    rgba(255,255,255,.07);
+
+  box-shadow:
+    0 0 42px
+      rgba(0,217,255,.08),
+    0 0 55px
+      rgba(255,122,0,.05);
+}
+
+h1 {
+  font-size:
+    clamp(
+      40px,
+      10vw,
+      58px
+    );
+
+  letter-spacing:-3.5px;
+
+  line-height:1;
+
+  margin-bottom:12px;
+
+  text-shadow:
+    0 0 28px
+    rgba(255,255,255,.08);
+}
+
+.subtitle {
+  max-width:430px;
+
+  margin:auto;
+
+  color:#667176;
+
+  line-height:1.65;
+
+  font-size:13px;
+}
+
+
+/* =========================================================
+   PROMPT
+   ========================================================= */
+
+.prompt-box {
+  margin:
+    0 auto 18px;
+
+  padding:
+    16px 18px;
+
+  max-width:430px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:12px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.035),
+      rgba(255,255,255,.012)
+    );
+
+  text-align:left;
+
+  box-shadow:
+    inset 0 1px
+    rgba(255,255,255,.025);
+}
+
+.prompt-label {
+  color:#566166;
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:1.6px;
+
+  margin-bottom:7px;
+}
+
+#promptText {
+  font-size:17px;
+
+  font-weight:800;
+}
+
+
+/* =========================================================
+   PROMPT SELECTOR
+   ========================================================= */
+
+.prompt-selector {
+  margin-bottom:20px;
+
+  padding:15px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:13px;
+
+  background:
+    rgba(255,255,255,.018);
+}
+
+.selector-title {
+  color:var(--muted);
+
+  font-size:10px;
+
+  font-weight:900;
+
+  letter-spacing:1px;
+
+  margin-bottom:10px;
+}
+
+.prompt-option {
+  margin-top:7px;
+
+  padding:
+    11px 12px;
+
+  background:
+    rgba(255,255,255,.018);
+
+  color:#b8c0c3;
+
+  border:
+    1px solid
+    rgba(255,255,255,.055);
+
+  border-radius:9px;
+
+  font-size:12px;
+
+  text-align:left;
+
+  transition:.18s ease;
+}
+
+.prompt-option:hover {
+  background:#ffffff12;
+
+  border-color:#fff2;
+
+  transform:
+    translateY(-1px);
+}
+
+.prompt-option.selected {
+  background:
+    rgba(255,122,0,.09);
+
+  color:#eaffcc;
+
+  border-color:
+    rgba(255,122,0,.28);
+
+  box-shadow:
+    inset 0 0 18px
+    rgba(255,122,0,.035);
+}
+
+
+/* =========================================================
+   VISIBILITY
+   ========================================================= */
+
+.visibility-selector {
+  margin-bottom:20px;
+
+  padding:15px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:13px;
+
+  background:
+    rgba(255,255,255,.018);
+}
+
+.visibility-options {
+  display:grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:8px;
+}
+
+.visibility-option {
+  margin:0;
+
+  padding:
+    13px 12px;
+
+  background:
+    rgba(255,255,255,.018);
+
+  color:#8f999d;
+
+  border:
+    1px solid
+    rgba(255,255,255,.055);
+
+  border-radius:9px;
+
+  font-size:12px;
+
+  text-align:left;
+
+  transition:.18s ease;
+}
+
+.visibility-option:hover {
+  background:#ffffff0b;
+
+  border-color:#fff2;
+}
+
+.visibility-option.selected {
+  background:
+    rgba(0,217,255,.08);
+
+  color:#d9faff;
+
+  border-color:
+    rgba(0,217,255,.28);
+}
+
+.visibility-name {
+  display:block;
+
+  font-weight:900;
+
+  margin-bottom:4px;
+}
+
+.visibility-description {
+  display:block;
+
+  color:var(--muted);
+
+  font-size:10px;
+
+  line-height:1.4;
+}
+
+.chain-visibility {
+  display:flex;
+
+  width:max-content;
+
+  margin:
+    0 auto 12px;
+
+  padding:
+    6px 9px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:999px;
+
+  color:var(--muted);
+
+  background:
+    rgba(255,255,255,.018);
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:.9px;
+
+  text-transform:uppercase;
+}
+
+
+/* =========================================================
+   STATS
+   ========================================================= */
+
+.stats {
+  display:flex;
+
+  justify-content:center;
+
+  gap:9px;
+
+  flex-wrap:wrap;
+
+  margin-bottom:14px;
+}
+
+.stat {
+  min-width:105px;
+
+  padding:
+    12px 13px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:15px;
+
+  background:#ffffff07;
+
+  text-align:center;
+}
+
+.stat-number {
+  font-size:19px;
+
+  font-weight:900;
+}
+
+.stat-label {
+  margin-top:3px;
+
+  color:var(--muted);
+
+  font-size:9px;
+
+  font-weight:800;
+
+  text-transform:uppercase;
+
+  letter-spacing:.7px;
+}
+
+
+/* =========================================================
+   MILESTONE
+   ========================================================= */
+
+.milestone {
+  display:none;
+
+  margin:
+    0 auto 20px;
+
+  padding:20px;
+
+  max-width:390px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:20px;
+
+  background:#ffffff08;
+
+  text-align:center;
+}
+
+.milestone.show {
+  display:block;
+
+  animation:
+    milestoneIn
+    .5s ease;
+}
+
+.milestone-emoji {
+  font-size:40px;
+
+  margin-bottom:7px;
+}
+
+.milestone-title {
+  font-size:20px;
+
+  font-weight:900;
+}
+
+.milestone-text {
+  color:var(--muted);
+
+  font-size:12px;
+
+  margin-top:5px;
+
+  line-height:1.45;
+}
+
+
+/* =========================================================
+   SPOTLIGHT
+   ========================================================= */
+
+.spotlight {
+  display:none;
+
+  margin-bottom:22px;
+
+  padding:19px;
+
+  border:
+    1px solid
+    var(--border);
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff0d,
+      #ffffff04
+    );
+
+  text-align:center;
+}
+
+.spotlight.show {
+  display:block;
+
+  animation:
+    pop .35s ease;
+}
+
+.rank {
+  font-size:31px;
+
+  font-weight:900;
+
+  letter-spacing:-1px;
+}
+
+.rank-sub {
+  color:var(--muted);
+
+  font-size:12px;
+
+  margin-top:4px;
+}
+
+.spot-actions {
+  display:flex;
+
+  gap:9px;
+
+  margin-top:14px;
+}
+
+.spot-actions button {
+  margin:0;
+}
+
+.secondary {
+  background:#ffffff0b;
+
+  color:#fff;
+
+  border:
+    1px solid
+    var(--border);
+}
+
+
+/* =========================================================
+   LIVE STATUS
+   ========================================================= */
+
+.live-status {
+  display:flex;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:8px;
+
+  margin:
+    0 0 18px;
+
+  color:#647077;
+
+  font-size:10px;
+
+  font-weight:850;
+
+  letter-spacing:.12em;
+
+  text-transform:uppercase;
+
+  transition:.2s ease;
+}
+
+.live-dot {
+  width:7px;
+  height:7px;
+
+  border-radius:50%;
+
+  background:#777;
+
+  display:inline-block;
+
+  transition:.2s ease;
+}
+
+.live-status.connected .live-dot {
+  background:
+    var(--green);
+
+  box-shadow:
+    0 0 0 4px
+      rgba(255,122,0,.08),
+    0 0 12px
+      rgba(255,122,0,.4);
+
+  animation:
+    livePulse
+    1.8s
+    ease-in-out
+    infinite;
+}
+
+.live-status.connected {
+  color:#8b969a;
+}
+
+.live-status.disconnected .live-dot {
+  background:#f59e0b;
+
+  box-shadow:
+    0 0 0 4px
+    rgba(245,158,11,.07);
+}
+
+.live-status.disconnected {
+  color:#888;
+}
+
+
+/* =========================================================
+   LIVE NEW CONTRIBUTION
+   ========================================================= */
+
+.item.live-new {
+  animation:
+    liveContribution
+    .65s ease;
+}
+
+.item.live-new .card {
+  border-color:#ffffff22;
+
+  box-shadow:
+    0 0 0 1px
+      #ffffff08,
+    0 10px 35px
+      rgba(255,255,255,.04);
+}
+
+
+/* =========================================================
+   LIVE ACTIVITY
+   ========================================================= */
+
+.live-activity {
+  display:none;
+
+  align-items:center;
+
+  justify-content:center;
+
+  gap:8px;
+
+  min-height:30px;
+
+  margin:
+    -5px auto 14px;
+
+  padding:
+    7px 11px;
+
+  width:max-content;
+
+  max-width:100%;
+
+  border:
+    1px solid
+    rgba(255,122,0,.12);
+
+  border-radius:999px;
+
+  background:
+    rgba(255,122,0,.035);
+
+  color:#aab5b0;
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:1px;
+
+  text-transform:uppercase;
+}
+
+.live-activity.show {
+  display:flex;
+
+  animation:
+    activityIn
+    .28s ease;
+}
+
+.activity-pulse {
+  width:6px;
+  height:6px;
+
+  flex:
+    0 0 6px;
+
+  border-radius:50%;
+
+  background:
+    var(--green);
+
+  box-shadow:
+    0 0 0 4px
+      rgba(255,122,0,.06),
+    0 0 12px
+      rgba(255,122,0,.35);
+
+  animation:
+    activityPulse
+    1s
+    ease-in-out
+    infinite;
+}
+
+.item.live-new .dot {
+  border-color:
+    rgba(255,122,0,.42);
+
+  color:
+    var(--green);
+
+  box-shadow:
+    0 0 0 5px
+      rgba(255,122,0,.035),
+    0 0 18px
+      rgba(255,122,0,.08);
+}
+
+.item.live-new .card {
+  border-color:
+    rgba(255,122,0,.22);
+
+  box-shadow:
+    0 0 0 1px
+      rgba(255,122,0,.035),
+    0 0 35px
+      rgba(255,122,0,.045);
+}
+
+
+/* =========================================================
+   CHAIN
+   ========================================================= */
+
+.chain-wrap {
+  position:relative;
+
+  margin-bottom:24px;
+}
+
+.line {
+  position:absolute;
+
+  left:19px;
+
+  top:22px;
+
+  bottom:22px;
+
+  width:2px;
+
+  background:
+    linear-gradient(
+      #fff3,
+      transparent
+    );
+}
+
+.chain {
+  display:flex;
+
+  flex-direction:column;
+
+  gap:9px;
+}
+
+.item {
+  display:flex;
+
+  gap:10px;
+
+  animation:
+    in .35s ease;
+}
+
+.dot {
+  flex:
+    0 0 34px;
+
+  width:34px;
+  height:34px;
+
+  border:
+    1px solid
+    rgba(255,122,0,.12);
+
+  background:#080c0e;
+
+  border-radius:9px;
+
+  display:grid;
+
+  place-items:center;
+
+  color:#6f7a7f;
+
+  font-size:10px;
+
+  font-weight:850;
+
+  z-index:1;
+
+  margin-top:4px;
+}
+
+.card {
+  flex:1;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(13,18,21,.98),
+      rgba(8,11,13,.98)
+    );
+
+  border:
+    1px solid
+    rgba(255,255,255,.065);
+
+  border-radius:11px;
+
+  padding:
+    13px 15px 15px;
+
+  position:relative;
+
+  box-shadow:
+    inset 0 1px
+    rgba(255,255,255,.02);
+
+  transition:
+    border-color .2s ease,
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.card:hover {
+  border-color:
+    rgba(255,255,255,.11);
+
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 12px 35px
+    rgba(0,0,0,.2);
+}
+
+.card-meta {
+  display:flex;
+
+  align-items:center;
+
+  justify-content:
+    space-between;
+
+  gap:10px;
+
+  margin-bottom:6px;
+}
+
+.label {
+  font-size:9px;
+
+  text-transform:uppercase;
+
+  letter-spacing:1.2px;
+
+  color:#8e989c;
+
+  font-weight:900;
+
+  margin-bottom:0;
+}
+
+.contribution-number {
+  color:#4f5a5f;
+
+  font-size:9px;
+
+  font-weight:850;
+
+  letter-spacing:1px;
+}
+
+.text {
+  line-height:1.6;
+
+  word-break:
+    break-word;
+
+  color:#e7ecea;
+
+  font-size:14px;
+}
+
+.empty {
+  text-align:center;
+
+  border:
+    1px dashed
+    var(--border);
+
+  border-radius:19px;
+
+  padding:34px;
+
+  color:var(--muted);
+}
+
+
+/* =========================================================
+   COMPOSER
+   ========================================================= */
+
+.composer {
+  background:
+    rgba(7,10,12,.92);
+
+  border:
+    1px solid
+    rgba(255,255,255,.08);
+
+  border-radius:13px;
+
+  padding:15px;
+
+  backdrop-filter:
+    blur(16px);
+
+  box-shadow:
+    0 20px 70px
+      rgba(0,0,0,.3),
+    inset 0 1px
+      rgba(255,255,255,.025);
+
+  position:relative;
+
+  z-index:5;
+}
+
+.composer-top {
+  display:flex;
+
+  justify-content:
+    space-between;
+
+  color:#58646a;
+
+  font-size:9px;
+
+  font-weight:900;
+
+  letter-spacing:1.2px;
+
+  text-transform:uppercase;
+
+  margin-bottom:9px;
+}
+
+
+/* MESSAGE BOX */
+
+.message-box {
+  position:relative;
+}
+
+textarea {
+  width:100%;
+
+  min-height:92px;
+
+  resize:vertical;
+
+  background:#050809;
+
+  color:#f5f8f6;
+
+  border:
+    1px solid
+    rgba(255,255,255,.065);
+
+  border-radius:9px;
+
+  padding:
+    14px 92px 14px 14px;
+
+  font:inherit;
+
+  font-size:14px;
+
+  line-height:1.6;
+
+  outline:0;
+
+  caret-color:
+    var(--green);
+}
+
+textarea:focus {
+  border-color:
+    rgba(255,122,0,.24);
+
+  box-shadow:
+    0 0 0 3px
+      rgba(255,122,0,.055),
+    inset 0 0 25px
+      rgba(255,122,0,.015);
+}
+
+.message-actions {
+  position:absolute;
+
+  right:9px;
+
+  top:50%;
+
+  transform:
+    translateY(-50%);
+
+  display:flex;
+
+  align-items:center;
+
+  gap:7px;
+}
+
+
+/* =========================================================
+   COMPOSER ACTIONS
+   ========================================================= */
+
+.composer-icon-button {
+  width:42px !important;
+
+  height:42px;
+
+  margin-top:0 !important;
+
+  padding:0 !important;
+
+  display:grid;
+
+  place-items:center;
+
+  flex:
+    0 0 42px;
+
+  border-radius:11px;
+
+  font-size:20px;
+
+  line-height:1;
+
+  font-weight:800;
+
+  border:
+    1px solid
+    rgba(255,255,255,.09);
+
+  background:#0b1013;
+
+  color:#f4f7f5;
+
+  box-shadow:none;
+}
+
+.composer-send {
+  background:#f5f7f5;
+
+  color:#07090a;
+
+  border-color:
+    transparent;
+}
+
+.composer-send:hover:not(:disabled) {
+  background:#ffffff;
+
+  box-shadow:
+    0 8px 22px
+    rgba(255,255,255,.08);
+}
+
+.composer-send:disabled {
+  background:#1a1f21;
+
+  color:#566066;
+
+  border-color:
+    rgba(255,255,255,.05);
+
+  opacity:1;
+}
+
+.composer-share {
+  background:
+    rgba(255,122,0,.055);
+
+  color:#dfffb3;
+
+  border-color:
+    rgba(255,122,0,.16);
+}
+
+.composer-share:hover {
+  background:
+    rgba(255,122,0,.10);
+
+  border-color:
+    rgba(255,122,0,.25);
+}
+
+
+/* =========================================================
+   BUTTON
+   ========================================================= */
+
+button {
+  width:100%;
+
+  margin-top:11px;
+
+  padding:14px;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius:9px;
+
+  background:#f5f7f5;
+
+  color:#07090a;
+
+  font-weight:900;
+
+  font-size:13px;
+
+  letter-spacing:.01em;
+
+  cursor:pointer;
+
+  transition:
+    transform .16s ease,
+    box-shadow .16s ease,
+    background .16s ease;
+}
+
+button:hover:not(:disabled) {
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 8px 22px
+    rgba(255,255,255,.07);
+}
+
+button:active:not(:disabled) {
+  transform:
+    translateY(0);
+}
+
+button:disabled {
+  opacity:.35;
+
+  cursor:not-allowed;
+}
+
+.hint {
+  text-align:center;
+
+  color:var(--muted);
+
+  font-size:11px;
+
+  margin-top:11px;
+}
+
+footer {
+  text-align:center;
+
+  color:#55555f;
+
+  font-size:11px;
+
+  margin-top:25px;
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast {
+  position:fixed;
+
+  left:50%;
+
+  bottom:22px;
+
+  transform:
+    translate(-50%,20px);
+
+  opacity:0;
+
+  background:#fff;
+
+  color:#000;
+
+  padding:
+    12px 17px;
+
+  border-radius:999px;
+
+  font-size:13px;
+
+  font-weight:800;
+
+  transition:.25s;
+
+  pointer-events:none;
+
+  z-index:9;
+
+  white-space:nowrap;
+}
+
+.toast.show {
+  opacity:1;
+
+  transform:
+    translate(-50%,0);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width:450px) {
+
+  body {
+    padding:15px;
+  }
+
+  .app {
+    padding-top:10px;
+  }
+
+  .top-nav {
+    margin-bottom:24px;
+  }
+
+  .discover-link {
+    padding:
+      9px 12px;
+  }
+
+  .message-actions {
+    right:8px;
+
+    gap:6px;
+  }
+
+  .composer-icon-button {
+    width:38px !important;
+
+    height:38px;
+
+    flex-basis:38px;
+  }
+
+  textarea {
+    padding-right:88px;
+  }
+
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes in {
+
+  from {
+    opacity:0;
+
+    transform:
+      translateY(8px);
+  }
+
+  to {
+    opacity:1;
+
+    transform:none;
+  }
+
+}
+
+@keyframes pop {
+
+  from {
+    opacity:0;
+
+    transform:
+      scale(.97);
+  }
+
+  to {
+    opacity:1;
+
+    transform:
+      scale(1);
+  }
+
+}
+
+@keyframes milestoneIn {
+
+  0% {
+    opacity:0;
+
+    transform:
+      scale(.85);
+  }
+
+  70% {
+    transform:
+      scale(1.04);
+  }
+
+  100% {
+    opacity:1;
+
+    transform:
+      scale(1);
+  }
+
+}
+
+@keyframes livePulse {
+
+  0%,
+  100% {
+    opacity:1;
+
+    transform:
+      scale(1);
+  }
+
+  50% {
+    opacity:.6;
+
+    transform:
+      scale(.82);
+  }
+
+}
+
+@keyframes activityIn {
+
+  from {
+    opacity:0;
+
+    transform:
+      translateY(-5px)
+      scale(.98);
+  }
+
+  to {
+    opacity:1;
+
+    transform:none;
+  }
+
+}
+
+@keyframes activityPulse {
+
+  0%,
+  100% {
+    transform:
+      scale(.9);
+
+    opacity:.65;
+  }
+
+  50% {
+    transform:
+      scale(1.15);
+
+    opacity:1;
+  }
+
+}
+
+@keyframes liveContribution {
+
+  0% {
+    opacity:0;
+
+    transform:
+      translateY(12px)
+      scale(.985);
+  }
+
+  60% {
+    transform:
+      translateY(-2px)
+      scale(1.005);
+  }
+
+  100% {
+    opacity:1;
+
+    transform:none;
+  }
+
+}
+
+
+/* =========================================================
+   V0.4 VISUAL POLISH — MAIN PAGE
+   ========================================================= */
+
+.app {
+  max-width:680px;
+}
+
+.top-nav {
+  padding-bottom:13px;
+
+  border-bottom:
+    1px solid
+    rgba(255,255,255,.045);
+}
+
+.discover-link {
+  position:relative;
+
+  overflow:hidden;
+
+  border-radius:999px;
+
+  padding:
+    9px 14px;
+
+  background:
+    rgba(255,122,0,.035);
+
+  border-color:
+    rgba(255,122,0,.13);
+}
+
+.discover-link::before {
+  content:"";
+
+  position:absolute;
+
+  inset:0;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255,122,0,.08),
+      transparent
+    );
+
+  transform:
+    translateX(-110%);
+
+  transition:
+    transform .5s ease;
+}
+
+.discover-link:hover::before {
+  transform:
+    translateX(110%);
+}
+
+header {
+  padding:
+    22px 0 6px;
+}
+
+.logo-main {
+  box-shadow:
+    0 0 0 1px
+      rgba(255,122,0,.14),
+    0 0 45px
+      rgba(255,122,0,.12);
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.logo-main:hover {
+  transform:
+    translateY(-2px)
+    scale(1.02);
+
+  box-shadow:
+    0 0 0 1px
+      rgba(255,122,0,.24),
+    0 0 60px
+      rgba(255,122,0,.20);
+}
+
+header h1 {
+  font-size:
+    clamp(
+      48px,
+      11vw,
+      70px
+    );
+
+  letter-spacing:-4px;
+
+  text-shadow:
+    0 0 35px
+    rgba(255,122,0,.08);
+}
+
+.subtitle {
+  max-width:500px;
+
+  margin-left:auto;
+
+  margin-right:auto;
+}
+
+
+/* SETUP CONTROL DECK */
+
+.prompt-selector,
+.visibility-selector {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.026),
+      rgba(255,255,255,.009)
+    );
+
+  border-color:
+    rgba(255,255,255,.065);
+
+  border-radius:16px;
+
+  padding:16px;
+
+  box-shadow:
+    inset 0 1px
+      rgba(255,255,255,.025),
+    0 16px 50px
+      rgba(0,0,0,.12);
+}
+
+.prompt-selector {
+  display:grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0,1fr)
+    );
+
+  gap:8px;
+}
+
+.prompt-selector .selector-title {
+  grid-column:
+    1 / -1;
+
+  margin-bottom:0;
+}
+
+.prompt-option {
+  margin-top:0;
+
+  min-height:44px;
+
+  border-radius:11px;
+}
+
+.prompt-option.selected {
+  color:#fff;
+
+  background:
+    rgba(255,122,0,.09);
+
+  border-color:
+    rgba(255,122,0,.34);
+
+  box-shadow:
+    inset 0 0 24px
+      rgba(255,122,0,.035),
+    0 0 18px
+      rgba(255,122,0,.035);
+}
+
+.visibility-options {
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0,1fr)
+    );
+}
+
+.visibility-option {
+  min-height:70px;
+
+  border-radius:11px;
+}
+
+.visibility-option.selected {
+  background:
+    rgba(255,122,0,.085);
+
+  color:#fff;
+
+  border-color:
+    rgba(255,122,0,.34);
+
+  box-shadow:
+    inset 0 0 22px
+    rgba(255,122,0,.03);
+}
+
+
+/* STATS POLISH */
+
+.stats {
+  display:grid;
+
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:8px;
+
+  margin:
+    2px 0 18px;
+}
+
+.stat {
+  min-width:0;
+
+  padding:
+    13px 10px;
+
+  border-radius:13px;
+
+  background:
+    rgba(255,255,255,.018);
+
+  transition:
+    border-color .2s ease,
+    transform .2s ease,
+    background .2s ease;
+}
+
+.stat:hover {
+  transform:
+    translateY(-1px);
+
+  border-color:
+    rgba(255,122,0,.15);
+
+  background:
+    rgba(255,122,0,.025);
+}
+
+.stat-number {
+  text-shadow:
+    0 0 18px
+    rgba(255,122,0,.10);
+}
+
+
+/* CHAIN POLISH */
+
+.chain-wrap {
+  margin-top:5px;
+
+  margin-bottom:26px;
+}
+
+.line {
+  left:20px;
+
+  width:1px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,122,0,.25),
+      rgba(255,255,255,.055) 18%,
+      rgba(255,255,255,.055) 82%,
+      transparent
+    );
+}
+
+.dot {
+  border-color:
+    rgba(255,122,0,.16);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(255,122,0,.018);
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    transform .2s ease;
+}
+
+.item:hover .dot {
+  border-color:
+    rgba(255,122,0,.34);
+
+  box-shadow:
+    0 0 0 5px
+      rgba(255,122,0,.035),
+    0 0 18px
+      rgba(255,122,0,.10);
+
+  transform:
+    scale(1.03);
+}
+
+.card {
+  border-radius:14px;
+
+  padding:
+    14px 16px 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,255,255,.025),
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(13,18,21,.98),
+      rgba(7,10,12,.98)
+    );
+}
+
+.card:hover {
+  border-color:
+    rgba(255,122,0,.16);
+
+  box-shadow:
+    0 12px 35px
+      rgba(0,0,0,.24),
+    0 0 0 1px
+      rgba(255,122,0,.025);
+}
+
+.contribution-number {
+  color:
+    rgba(255,122,0,.45);
+}
+
+
+/* COMPOSER POLISH */
+
+.composer {
+  border-color:
+    rgba(255,122,0,.13);
+
+  border-radius:17px;
+
+  padding:16px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,122,0,.028),
+      rgba(7,10,12,.96) 35%
+    ),
+    rgba(7,10,12,.96);
+
+  box-shadow:
+    0 24px 80px
+      rgba(0,0,0,.42),
+    0 0 0 1px
+      rgba(255,122,0,.025),
+    inset 0 1px
+      rgba(255,255,255,.025);
+}
+
+.composer-top span:first-child {
+  color:
+    rgba(255,122,0,.75);
+}
+
+textarea {
+  min-height:100px;
+
+  border-radius:12px;
+
+  background:#040708;
+}
+
+textarea:focus {
+  border-color:
+    rgba(255,122,0,.34);
+
+  box-shadow:
+    0 0 0 3px
+      rgba(255,122,0,.065),
+    inset 0 0 28px
+      rgba(255,122,0,.018);
+}
+
+.composer-send:not(:disabled) {
+  background:
+    var(--green);
+
+  color:#090b0c;
+
+  box-shadow:
+    0 0 24px
+    rgba(255,122,0,.18);
+}
+
+.composer-send:hover:not(:disabled) {
+  background:#ff8b24;
+
+  box-shadow:
+    0 0 30px
+    rgba(255,122,0,.25);
+}
+
+.composer-share {
+  background:
+    rgba(255,122,0,.065);
+
+  color:#ffb05e;
+
+  border-color:
+    rgba(255,122,0,.20);
+}
+
+.composer-share:hover {
+  background:
+    rgba(255,122,0,.11);
+}
+
+footer {
+  color:#4c4440;
+}
+
+
+/* RESPONSIVE POLISH */
+
+@media (max-width:600px) {
+
+  .prompt-selector {
+    grid-template-columns:
+      1fr;
+  }
+
+  .prompt-selector .selector-title {
+    grid-column:auto;
+  }
+
+  .visibility-options {
+    grid-template-columns:
+      1fr;
+  }
+
+  .visibility-option {
+    min-height:auto;
+  }
+
+}
+
+@media (max-width:450px) {
+
+  .stats {
+    gap:6px;
+  }
+
+  .stat {
+    padding:
+      11px 7px;
+  }
+
+  header h1 {
+    letter-spacing:-3px;
+  }
+
+}
+
+
+/* CONTRIBUTOR ID POLISH */
+
+.label {
+  text-transform:uppercase;
+
+  letter-spacing:.75px;
+
+  font-size:8px;
+
+  font-weight:900;
+}
+
+.label:first-letter {
+  color:#ff7a00;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<main class="app">
+
+
+<!-- =======================================================
+     TOP NAV
+     ======================================================= -->
+
+<nav class="top-nav">
+
+  <a
+    href="/"
+    class="logo"
+    aria-label="Pass It On home"
+  ></a>
+
+  <a
+    href="/discover"
+    class="discover-link"
+  >
+    🔎 Discover
+  </a>
+
+</nav>
+
+
+<!-- =======================================================
+     HEADER
+     ======================================================= -->
+
+<header>
+
+  <div
+    class="logo-main"
+    aria-hidden="true"
+  ></div>
+
+  <h1>
+    Pass It On.
+  </h1>
+
+  <div
+    id="promptBox"
+    class="prompt-box"
+  >
+
+    <div class="prompt-label">
+      THE PROMPT
+    </div>
+
+    <div id="promptText">
+      Add anything ✨
+    </div>
+
+  </div>
+
+  <p class="subtitle">
+    Start something.
+    Add something.
+    Then pass it to someone else.
+  </p>
+
+</header>
+
+
+<!-- =======================================================
+     PROMPTS
+     ======================================================= -->
+
+<section
+  id="promptSelector"
+  class="prompt-selector"
+>
+
+  <div class="selector-title">
+    START A CHAIN
+  </div>
+
+  <button
+    class="prompt-option"
+    data-prompt="Make someone laugh 😂"
+  >
+    😂 Make someone laugh
+  </button>
+
+  <button
+    class="prompt-option"
+    data-prompt="Drop a random thought 🧠"
+  >
+    🧠 Drop a random thought
+  </button>
+
+  <button
+    class="prompt-option"
+    data-prompt="Add a song 🎵"
+  >
+    🎵 Add a song
+  </button>
+
+  <button
+    class="prompt-option"
+    data-prompt="Tell us something 🤫"
+  >
+    🤫 Tell us something
+  </button>
+
+  <button
+    class="prompt-option"
+    data-prompt="Say something to the world 🌎"
+  >
+    🌎 Say something to the world
+  </button>
+
+  <button
+    class="prompt-option selected"
+    data-prompt="Add anything ✨"
+  >
+    ✨ Add anything
+  </button>
+
+</section>
+
+
+<!-- =======================================================
+     VISIBILITY
+     ======================================================= -->
+
+<section
+  id="visibilitySelector"
+  class="visibility-selector"
+>
+
+  <div class="selector-title">
+    CHAIN VISIBILITY
+  </div>
+
+  <div class="visibility-options">
+
+    <button
+      class="visibility-option selected"
+      data-visibility="public"
+      type="button"
+    >
+
+      <span class="visibility-name">
+        🌎 Public
+      </span>
+
+      <span class="visibility-description">
+        Appears in Discover.
+      </span>
+
+    </button>
+
+
+    <button
+      class="visibility-option"
+      data-visibility="link"
+      type="button"
+    >
+
+      <span class="visibility-name">
+        🔗 Link-only
+      </span>
+
+      <span class="visibility-description">
+        Hidden from Discover.
+      </span>
+
+    </button>
+
+
+    <button
+      class="visibility-option"
+      data-visibility="private"
+      type="button"
+    >
+
+      <span class="visibility-name">
+        🔒 Private
+      </span>
+
+      <span class="visibility-description">
+        Discover-visible.
+        Code required.
+      </span>
+
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     STATS
+     ======================================================= -->
+
+<div
+  id="stats"
+  class="stats"
+></div>
+
+
+<!-- =======================================================
+     MILESTONE
+     ======================================================= -->
+
+<section
+  id="milestone"
+  class="milestone"
+>
+
+  <div
+    id="milestoneEmoji"
+    class="milestone-emoji"
+  ></div>
+
+  <div
+    id="milestoneTitle"
+    class="milestone-title"
+  ></div>
+
+  <div
+    id="milestoneText"
+    class="milestone-text"
+  ></div>
+
+</section>
+
+
+<!-- =======================================================
+     SPOTLIGHT
+     ======================================================= -->
+
+<section
+  id="spotlight"
+  class="spotlight"
+>
+
+  <div
+    id="rank"
+    class="rank"
+  ></div>
+
+  <div
+    id="rankSub"
+    class="rank-sub"
+  ></div>
+
+  <div class="spot-actions">
+
+    <button
+      id="shareAgain"
+    >
+      Pass It On ↗
+    </button>
+
+    <button
+      id="copyLink"
+      class="secondary"
+    >
+      Copy Link
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     LIVE STATUS
+     ======================================================= -->
+
+<div
+  id="liveStatus"
+  class="live-status"
+  style="display:none"
+>
+
+  <span
+    class="live-dot"
+  ></span>
+
+  <span
+    id="liveText"
+  >
+    LIVE · connecting…
+  </span>
+
+</div>
+
+
+<div
+  id="liveActivity"
+  class="live-activity"
+  aria-live="polite"
+>
+
+  <span
+    class="activity-pulse"
+  ></span>
+
+  <span
+    id="liveActivityText"
+  ></span>
+
+</div>
+
+
+<!-- =======================================================
+     CHAIN
+     ======================================================= -->
+
+<section
+  class="chain-wrap"
+>
+
+  <div
+    class="line"
+  ></div>
+
+  <div
+    id="chain"
+    class="chain"
+  ></div>
+
+</section>
+
+
+<!-- =======================================================
+     COMPOSER
+     ======================================================= -->
+
+<section class="composer">
+
+  <div class="composer-top">
+
+    <span>
+      YOUR TURN
+    </span>
+
+    <span id="counter">
+      0 / 200
+    </span>
+
+  </div>
+
+  <div class="message-box">
+
+    <textarea
+      id="message"
+      maxlength="200"
+      placeholder="Write something…"
+    ></textarea>
+
+    <div class="message-actions">
+
+      <button
+        id="button"
+        class="
+          composer-icon-button
+          composer-send
+        "
+        disabled
+        type="button"
+        aria-label="Send contribution"
+        title="Send contribution"
+      >
+        ↗
+      </button>
+
+      <button
+        id="shareComposer"
+        class="
+          composer-icon-button
+          composer-share
+        "
+        type="button"
+        aria-label="Share chain"
+        title="Share chain"
+      >
+        ⤴
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+  One person starts it.
+  Everyone adds to it.
+</footer>
+
+
+</main>
+
+
+<div
+  id="toast"
+  class="toast"
+></div>
+
+
+<script>
+
+/* =========================================================
+   STATE
+   ========================================================= */
+
+let id =
+  location.pathname
+    .startsWith("/c/")
+      ? location.pathname
+          .split("/")[2]
+      : null;
+
+
+let chain = [];
+
+
+let shareUrl =
+  location.href;
+
+
+let selectedPrompt =
+  "Add anything ✨";
+
+
+let selectedVisibility =
+  "public";
+
+
+let liveSource =
+  null;
+
+
+/* =========================================================
+   PARTICIPANT TOKEN
+   ========================================================= */
+
+let participantToken =
+  localStorage.getItem(
+    "passItOnParticipantToken"
+  );
+
+
+if (!participantToken) {
+
+  participantToken =
+    crypto.randomUUID();
+
+  localStorage.setItem(
+    "passItOnParticipantToken",
+    participantToken
+  );
+
+}
+
+
+let currentContributorId =
+  null;
+
+
+/* =========================================================
+   CONTRIBUTOR LABEL
+   ========================================================= */
+
+function contributorLabel(id) {
+
+  const contributorId =
+    Number(id || 0);
+
+  if (
+    currentContributorId !== null &&
+    Number(
+      currentContributorId
+    ) === contributorId
+  ) {
+
+    return (
+      `YOU · CONTRIBUTOR ${contributorId}`
+    );
+
+  }
+
+  return (
+    `CONTRIBUTOR ${contributorId}`
+  );
+
+}
+
+
+/* =========================================================
+   PRIVATE CHAIN CODE
+   ========================================================= */
+
+let chainAccessCode =
+  id
+    ? localStorage.getItem(
+        `passItOnAccessCode:${id}`
+      )
+    : null;
+
+
+function privateCodeHeaders() {
+
+  return chainAccessCode
+
+    ? {
+        "X-Chain-Code":
+          chainAccessCode
+      }
+
+    : {};
+
+}
+
+
+async function requestPrivateCode() {
+
+  const code =
+    window.prompt(
+      "🔒 This chain is private. Enter the access code to join:"
+    );
+
+
+  if (!code) {
+
+    throw new Error(
+      "This private chain requires an access code."
+    );
+
+  }
+
+
+  chainAccessCode =
+    code
+      .trim()
+      .toUpperCase();
+
+
+  localStorage.setItem(
+    `passItOnAccessCode:${id}`,
+    chainAccessCode
+  );
+
+}
+
+
+/* =========================================================
+   ELEMENTS
+   ========================================================= */
+
+const message =
+  document.querySelector(
+    "#message"
+  );
+
+
+const button =
+  document.querySelector(
+    "#button"
+  );
+
+
+const shareComposer =
+  document.querySelector(
+    "#shareComposer"
+  );
+
+
+const counter =
+  document.querySelector(
+    "#counter"
+  );
+
+
+const chainEl =
+  document.querySelector(
+    "#chain"
+  );
+
+
+const stats =
+  document.querySelector(
+    "#stats"
+  );
+
+
+const toast =
+  document.querySelector(
+    "#toast"
+  );
+
+
+const spotlight =
+  document.querySelector(
+    "#spotlight"
+  );
+
+
+const rank =
+  document.querySelector(
+    "#rank"
+  );
+
+
+const rankSub =
+  document.querySelector(
+    "#rankSub"
+  );
+
+
+const shareAgain =
+  document.querySelector(
+    "#shareAgain"
+  );
+
+
+const copyLink =
+  document.querySelector(
+    "#copyLink"
+  );
+
+
+const promptText =
+  document.querySelector(
+    "#promptText"
+  );
+
+
+const promptSelector =
+  document.querySelector(
+    "#promptSelector"
+  );
+
+
+const promptOptions =
+  document.querySelectorAll(
+    ".prompt-option"
+  );
+
+
+const visibilitySelector =
+  document.querySelector(
+    "#visibilitySelector"
+  );
+
+
+const visibilityOptions =
+  document.querySelectorAll(
+    ".visibility-option"
+  );
+
+
+const milestone =
+  document.querySelector(
+    "#milestone"
+  );
+
+
+const milestoneEmoji =
+  document.querySelector(
+    "#milestoneEmoji"
+  );
+
+
+const milestoneTitle =
+  document.querySelector(
+    "#milestoneTitle"
+  );
+
+
+const milestoneText =
+  document.querySelector(
+    "#milestoneText"
+  );
+
+
+const liveStatus =
+  document.querySelector(
+    "#liveStatus"
+  );
+
+
+const liveText =
+  document.querySelector(
+    "#liveText"
+  );
+
+
+const liveActivity =
+  document.querySelector(
+    "#liveActivity"
+  );
+
+
+const liveActivityText =
+  document.querySelector(
+    "#liveActivityText"
+  );
+
+
+let liveActivityTimer =
+  null;
+
+
+/* =========================================================
+   PROMPTS
+   ========================================================= */
+
+promptOptions.forEach(
+  option => {
+
+    option.addEventListener(
+      "click",
+      () => {
+
+        selectedPrompt =
+          option.dataset.prompt;
+
+
+        promptOptions.forEach(
+          item => {
+
+            item.classList.remove(
+              "selected"
+            );
+
+          }
+        );
+
+
+        option.classList.add(
+          "selected"
+        );
+
+
+        promptText.textContent =
+          selectedPrompt;
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   VISIBILITY
+   ========================================================= */
+
+visibilityOptions.forEach(
+  option => {
+
+    option.addEventListener(
+      "click",
+      () => {
+
+        selectedVisibility =
+          option.dataset.visibility ===
+          "private"
+
+            ? "private"
+
+            : option.dataset.visibility ===
+              "link"
+
+              ? "link"
+
+              : "public";
+
+
+        visibilityOptions.forEach(
+          item =>
+
+            item.classList.remove(
+              "selected"
+            )
+
+        );
+
+
+        option.classList.add(
+          "selected"
+        );
+
+      }
+    );
+
+  }
+);
+
+
+/* =========================================================
+   ESCAPE HTML
+   ========================================================= */
+
+function escapeHTML(text) {
+
+  const div =
+    document.createElement(
+      "div"
+    );
+
+
+  div.textContent =
+    text || "";
+
+
+  return div.innerHTML;
+
+}
+
+
+/* =========================================================
+   TIME
+   ========================================================= */
+
+function timeAgo(date) {
+
+  const seconds =
+    Math.floor(
+      (
+        Date.now() -
+        new Date(date)
+          .getTime()
+      ) /
+      1000
+    );
+
+
+  if (
+    seconds < 10
+  ) {
+
+    return "just now";
+
+  }
+
+
+  if (
+    seconds < 60
+  ) {
+
+    return (
+      `${seconds}s ago`
+    );
+
+  }
+
+
+  const minutes =
+    Math.floor(
+      seconds / 60
+    );
+
+
+  if (
+    minutes < 60
+  ) {
+
+    return (
+      `${minutes}m ago`
+    );
+
+  }
+
+
+  const hours =
+    Math.floor(
+      minutes / 60
+    );
+
+
+  if (
+    hours < 24
+  ) {
+
+    return (
+      `${hours}h ago`
+    );
+
+  }
+
+
+  const days =
+    Math.floor(
+      hours / 24
+    );
+
+
+  if (
+    days < 30
+  ) {
+
+    return (
+      `${days}d ago`
+    );
+
+  }
+
+
+  return (
+    `${Math.floor(
+      days / 30
+    )}mo ago`
+  );
+
+}
+
+
+/* =========================================================
+   REGISTER CONTRIBUTOR
+   ========================================================= */
+
+async function registerParticipant() {
+
+  if (!id) {
+
+    return null;
+
+  }
+
+
+  const response =
+    await fetch(
+      `/api/chains/${encodeURIComponent(id)}/participant`,
+      {
+
+        method:
+          "POST",
+
+        headers: {
+
+          "Content-Type":
+            "application/json"
+
+        },
+
+        body:
+          JSON.stringify({
+
+            token:
+              participantToken
+
+          })
+
+      }
+    );
+
+
+  if (!response.ok) {
+
+    throw new Error(
+      "Could not register contributor."
+    );
+
+  }
+
+
+  const data =
+    await response.json();
+
+
+  currentContributorId =
+    data.contributorId;
+
+
+  return currentContributorId;
+
+}
+
+
+/* =========================================================
+   MILESTONES
+   ========================================================= */
+
+const milestones = {
+
+  5: {
+
+    emoji:
+      "🌱",
+
+    title:
+      "It's spreading.",
+
+    text:
+      "Five contributions. This chain is starting to move."
+
+  },
+
+
+  10: {
+
+    emoji:
+      "🔥",
+
+    title:
+      "It's catching on.",
+
+    text:
+      "Ten contributions. Keep passing it on."
+
+  },
+
+
+  25: {
+
+    emoji:
+      "🚀",
+
+    title:
+      "This is getting big.",
+
+    text:
+      "Twenty-five contributions. Someone started something."
+
+  },
+
+
+  50: {
+
+    emoji:
+      "👀",
+
+    title:
+      "People really passed this on.",
+
+    text:
+      "Fifty contributions. This chain has travelled."
+
+  },
+
+
+  100: {
+
+    emoji:
+      "💯",
+
+    title:
+      "100 contributions.",
+
+    text:
+      "One chain. One hundred additions."
+
+  }
+
+};
+
+
+/* =========================================================
+   SHOW MILESTONE
+   ========================================================= */
+
+function showMilestone(number) {
+
+  const data =
+    milestones[number];
+
+
+  if (!data) {
+
+    return;
+
+  }
+
+
+  milestoneEmoji.textContent =
+    data.emoji;
+
+
+  milestoneTitle.textContent =
+    data.title;
+
+
+  milestoneText.textContent =
+    data.text;
+
+
+  milestone.classList.remove(
+    "show"
+  );
+
+
+  void milestone.offsetWidth;
+
+
+  milestone.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+
+function render() {
+
+  if (!chain.length) {
+
+    stats.innerHTML =
+      "";
+
+
+    chainEl.innerHTML = `
+
+      <div class="empty">
+
+        <div
+          style="
+            font-size:28px;
+            margin-bottom:8px
+          "
+        >
+          ✨
+        </div>
+
+        You’re first.
+
+        <div
+          style="
+            font-size:12px;
+            margin-top:5px
+          "
+        >
+
+          Add something
+          and start the chain.
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    return;
+
+  }
+
+
+  const first =
+    chain[0];
+
+
+  const latest =
+    chain[
+      chain.length - 1
+    ];
+
+
+  stats.innerHTML = `
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+      >
+        ${chain.length}
+      </div>
+
+      <div
+        class="stat-label"
+      >
+        Contributions
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+      >
+        ${timeAgo(
+          first.createdAt
+        )}
+      </div>
+
+      <div
+        class="stat-label"
+      >
+        Started
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+      >
+        ${timeAgo(
+          latest.createdAt
+        )}
+      </div>
+
+      <div
+        class="stat-label"
+      >
+        Latest
+      </div>
+
+    </div>
+
+  `;
+
+
+  chainEl.innerHTML =
+
+    chain
+      .map(
+        (
+          item,
+          index
+        ) => `
+
+      <div
+        class="item"
+        data-contribution-id="${item.id || ""}"
+      >
+
+        <div class="dot">
+          ${index + 1}
+        </div>
+
+        <div class="card">
+
+          <div class="card-meta">
+
+            <div class="label">
+              ${escapeHTML(
+                contributorLabel(
+                  item.contributorId
+                )
+              )}
+            </div>
+
+            <div
+              class="contribution-number"
+            >
+              #${index + 1}
+            </div>
+
+          </div>
+
+          <div class="text">
+            ${escapeHTML(
+              item.text
+            )}
+          </div>
+
+        </div>
+
+      </div>
+
+    `
+      )
+      .join("");
+
+}
+
+
+/* =========================================================
+   LIVE CONTRIBUTION
+   ========================================================= */
+
+function renderLiveContribution(
+  contribution
+) {
+
+  const index =
+    chain.length - 1;
+
+
+  const item =
+    document.createElement(
+      "div"
+    );
+
+
+  item.className =
+    "item live-new";
+
+
+  item.dataset.contributionId =
+    contribution.id || "";
+
+
+  item.innerHTML = `
+
+    <div class="dot">
+      ${index + 1}
+    </div>
+
+    <div class="card">
+
+      <div class="card-meta">
+
+        <div class="label">
+
+          ${escapeHTML(
+            contributorLabel(
+              contribution.contributorId
+            )
+          )}
+
+        </div>
+
+        <div
+          class="contribution-number"
+        >
+          #${index + 1}
+        </div>
+
+      </div>
+
+      <div class="text">
+
+        ${escapeHTML(
+          contribution.text
+        )}
+
+      </div>
+
+    </div>
+
+  `;
+
+
+  chainEl.appendChild(
+    item
+  );
+
+
+  item.scrollIntoView({
+
+    behavior:
+      "smooth",
+
+    block:
+      "nearest"
+
+  });
+
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+function toastMsg(text) {
+
+  toast.textContent =
+    text;
+
+
+  toast.classList.add(
+    "show"
+  );
+
+
+  setTimeout(
+    () => {
+
+      toast.classList.remove(
+        "show"
+      );
+
+    },
+    2600
+  );
+
+}
+
+
+/* =========================================================
+   SPOTLIGHT
+   ========================================================= */
+
+function showSpotlight() {
+
+  const number =
+    chain.length;
+
+
+  rank.textContent =
+    `You're #${number}.`;
+
+
+  rankSub.textContent =
+
+    `${
+      number === 1
+
+        ? "You started"
+
+        : "You just added to"
+
+    } this chain. Now pass it to someone else.`;
+
+
+  spotlight.classList.add(
+    "show"
+  );
+
+}
+
+
+/* =========================================================
+   SHARE
+   ========================================================= */
+
+async function shareChain() {
+
+  const data = {
+
+    title:
+      "Pass It On.",
+
+    text:
+      `${selectedPrompt} — I just added to this chain. Your turn 👀`,
+
+    url:
+      shareUrl
+
+  };
+
+
+  if (navigator.share) {
+
+    try {
+
+      await navigator.share(
+        data
+      );
+
+
+      toastMsg(
+        "Passed on successfully ✨"
+      );
+
+    }
+
+    catch(error) {
+
+      if (
+        error.name !==
+        "AbortError"
+      ) {
+
+        toastMsg(
+          "Your chain is ready."
+        );
+
+      }
+
+    }
+
+  }
+
+  else {
+
+    try {
+
+      await navigator
+        .clipboard
+        .writeText(
+          shareUrl
+        );
+
+
+      toastMsg(
+        "Link copied — pass it on! 🔗"
+      );
+
+    }
+
+    catch {
+
+      toastMsg(
+        shareUrl
+      );
+
+    }
+
+  }
+
+}
+
+
+/* =========================================================
+   COPY
+   ========================================================= */
+
+async function copyChain() {
+
+  try {
+
+    await navigator
+      .clipboard
+      .writeText(
+        shareUrl
+      );
+
+
+    toastMsg(
+      "Link copied 🔗"
+    );
+
+  }
+
+  catch {
+
+    toastMsg(
+      "Copy this link: " +
+      shareUrl
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   PRESENCE FORMAT
+   ========================================================= */
+
+function formatPresence(count) {
+
+  const safeCount =
+    Math.max(
+      0,
+      Number(count) || 0
+    );
+
+
+  return (
+    safeCount === 1
+
+      ? "1 person here"
+
+      : `${safeCount} people here`
+  );
+
+}
+
+
+/* =========================================================
+   LIVE ACTIVITY
+   ========================================================= */
+
+function showLiveActivity(
+  contribution,
+  contributionNumber
+) {
+
+  const contributorId =
+    contribution
+      ?.contributorId;
+
+
+  liveActivityText.textContent =
+
+    `${contributorLabel(
+      contributorId
+    )} just added · #${contributionNumber}`;
+
+
+  liveActivity.classList.remove(
+    "show"
+  );
+
+
+  void liveActivity.offsetWidth;
+
+
+  liveActivity.classList.add(
+    "show"
+  );
+
+
+  clearTimeout(
+    liveActivityTimer
+  );
+
+
+  liveActivityTimer =
+    setTimeout(
+      () => {
+
+        liveActivity.classList.remove(
+          "show"
+        );
+
+      },
+      3600
+    );
+
+}
+
+
+/* =========================================================
+   LIVE CHAIN
+   ========================================================= */
+
+async function connectLiveChain() {
+
+  if (!id) {
+
+    return;
+
+  }
+
+
+  try {
+
+    await registerParticipant();
+
+  }
+
+  catch(error) {
+
+    console.error(
+      "Contributor registration error:",
+      error
+    );
+
+  }
+
+
+  if (liveSource) {
+
+    liveSource.close();
+
+  }
+
+
+  liveStatus.style.display =
+    "flex";
+
+
+  liveStatus.classList.remove(
+    "connected"
+  );
+
+
+  liveStatus.classList.add(
+    "disconnected"
+  );
+
+
+  liveText.textContent =
+    "Connecting live…";
+
+
+  liveSource =
+    new EventSource(
+
+      `/api/chains/${encodeURIComponent(id)}/events?token=${encodeURIComponent(participantToken)}${
+        chainAccessCode
+          ? `&code=${encodeURIComponent(chainAccessCode)}`
+          : ""
+      }`
+
+    );
+
+
+  liveSource.onopen =
+    () => {
+
+      liveStatus.classList.add(
+        "connected"
+      );
+
+
+      liveStatus.classList.remove(
+        "disconnected"
+      );
+
+
+      liveText.textContent =
+        "Live";
+
+    };
+
+
+  liveSource.onmessage =
+    event => {
+
+      try {
+
+        const data =
+          JSON.parse(
+            event.data
+          );
+
+
+        /* CONNECTED */
+
+        if (
+          data.type ===
+          "connected"
+        ) {
+
+          liveStatus.classList.add(
+            "connected"
+          );
+
+
+          liveStatus.classList.remove(
+            "disconnected"
+          );
+
+
+          liveText.textContent =
+            formatPresence(
+              data.presenceCount ||
+              1
+            );
+
+
+          return;
+
+        }
+
+
+        /* PRESENCE */
+
+        if (
+          data.type ===
+          "presence"
+        ) {
+
+          liveStatus.classList.add(
+            "connected"
+          );
+
+
+          liveStatus.classList.remove(
+            "disconnected"
+          );
+
+
+          liveText.textContent =
+            formatPresence(
+              data.count || 0
+            );
+
+
+          return;
+
+        }
+
+
+        /* CONTRIBUTION */
+
+        if (
+          data.type ===
+          "contribution"
+        ) {
+
+          const contribution =
+            data.contribution;
+
+
+          if (!contribution) {
+
+            return;
+
+          }
+
+
+          const alreadyExists =
+            chain.some(
+              item =>
+
+                String(
+                  item.id
+                ) ===
+
+                String(
+                  contribution.id
+                )
+
+            );
+
+
+          if (alreadyExists) {
+
+            return;
+
+          }
+
+
+          const oldCount =
+            chain.length;
+
+
+          chain.push(
+            contribution
+          );
+
+
+          renderLiveContribution(
+            contribution
+          );
+
+
+          renderStatsOnly();
+
+
+          if (
+            milestones[
+              chain.length
+            ] &&
+            chain.length >
+              oldCount
+          ) {
+
+            showMilestone(
+              chain.length
+            );
+
+          }
+
+
+          showLiveActivity(
+            contribution,
+            chain.length
+          );
+
+        }
+
+      }
+
+      catch(error) {
+
+        console.error(
+          "Live Chain event error:",
+          error
+        );
+
+      }
+
+    };
+
+
+  liveSource.onerror =
+    () => {
+
+      liveStatus.classList.remove(
+        "connected"
+      );
+
+
+      liveStatus.classList.add(
+        "disconnected"
+      );
+
+
+      liveText.textContent =
+        "Reconnecting…";
+
+    };
+
+}
+
+
+/* =========================================================
+   LIVE STATS
+   ========================================================= */
+
+function renderStatsOnly() {
+
+  if (!chain.length) {
+
+    return;
+
+  }
+
+
+  const first =
+    chain[0];
+
+
+  const latest =
+    chain[
+      chain.length - 1
+    ];
+
+
+  stats.innerHTML = `
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+      >
+        ${chain.length}
+      </div>
+
+      <div
+        class="stat-label"
+      >
+        Contributions
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+      >
+        ${timeAgo(
+          first.createdAt
+        )}
+      </div>
+
+      <div
+        class="stat-label"
+      >
+        Started
+      </div>
+
+    </div>
+
+
+    <div class="stat">
+
+      <div
+        class="stat-number"
+      >
+        ${timeAgo(
+          latest.createdAt
+        )}
+      </div>
+
+      <div
+        class="stat-label"
+      >
+        Latest
+      </div>
+
+    </div>
+
+  `;
+
+}
+
+
+/* =========================================================
+   CLOSE LIVE
+   ========================================================= */
+
+function closeLiveChain() {
+
+  if (!liveSource) {
+
+    return;
+
+  }
+
+
+  liveSource.close();
+
+
+  liveSource =
+    null;
+
+}
+
+
+/* =========================================================
+   LOAD
+   ========================================================= */
+
+async function load() {
+
+  if (!id) {
+
+    liveStatus.style.display =
+      "none";
+
+
+    render();
+
+
+    return;
+
+  }
+
+
+  try {
+
+    let response =
+      await fetch(
+
+        `/api/chains/${encodeURIComponent(id)}`,
+
+        {
+
+          headers:
+            privateCodeHeaders()
+
+        }
+
+      );
+
+
+    /* PRIVATE ACCESS REQUIRED */
+
+    if (
+      response.status ===
+      401
+    ) {
+
+      const authError =
+        await response
+          .json()
+          .catch(
+            () => ({})
+          );
+
+
+      if (
+        authError.error ===
+        "PRIVATE_CHAIN"
+      ) {
+
+        await requestPrivateCode();
+
+
+        response =
+          await fetch(
+
+            `/api/chains/${encodeURIComponent(id)}`,
+
+            {
+
+              headers:
+                privateCodeHeaders()
+
+            }
+
+          );
+
+      }
+
+    }
+
+
+    if (!response.ok) {
+
+      throw new Error();
+
+    }
+
+
+    const data =
+      await response.json();
+
+
+    chain =
+      data.contributions ||
+      [];
+
+
+    shareUrl =
+      location.origin +
+      `/c/${id}`;
+
+
+    selectedPrompt =
+      data.prompt ||
+      "Add anything ✨";
+
+
+    selectedVisibility =
+
+      data.visibility ===
+      "private"
+
+        ? "private"
+
+        : data.visibility ===
+          "link"
+
+          ? "link"
+
+          : "public";
+
+
+    let visibilityBadge =
+      document.querySelector(
+        "#chainVisibilityBadge"
+      );
+
+
+    if (!visibilityBadge) {
+
+      visibilityBadge =
+        document.createElement(
+          "div"
+        );
+
+
+      visibilityBadge.id =
+        "chainVisibilityBadge";
+
+
+      visibilityBadge.className =
+        "chain-visibility";
+
+
+      const promptBox =
+        document.querySelector(
+          "#promptBox"
+        );
+
+
+      if (promptBox) {
+
+        promptBox
+          .insertAdjacentElement(
+            "afterend",
+            visibilityBadge
+          );
+
+      }
+
+    }
+
+
+    visibilityBadge.textContent =
+
+      selectedVisibility ===
+      "private"
+
+        ? "🔒 Private"
+
+        : selectedVisibility ===
+          "link"
+
+          ? "🔗 Link-only"
+
+          : "🌎 Public";
+
+
+    promptText.textContent =
+      selectedPrompt;
+
+
+    promptSelector.style.display =
+      "none";
+
+
+    visibilitySelector.style.display =
+      "none";
+
+
+    render();
+
+
+    connectLiveChain();
+
+  }
+
+
+  catch {
+
+    chain = [];
+
+
+    liveStatus.style.display =
+      "none";
+
+
+    chainEl.innerHTML = `
+
+      <div class="empty">
+
+        This chain doesn't exist
+        or is no longer available.
+
+      </div>
+
+    `;
+
+  }
+
+}
+
+
+/* =========================================================
+   TEXT INPUT
+   ========================================================= */
+
+message.addEventListener(
+  "input",
+  () => {
+
+    counter.textContent =
+
+      `${message.value.length} / 200`;
+
+
+    button.disabled =
+
+      !message.value
+        .trim();
+
+  }
+);
+
+
+/* =========================================================
+   ADD CONTRIBUTION / CREATE CHAIN
+   ========================================================= */
+
+button.addEventListener(
+  "click",
+  async () => {
+
+    const text =
+      message.value
+        .trim();
+
+
+    if (!text) {
+
+      return;
+
+    }
+
+
+    const oldCount =
+      chain.length;
+
+
+    button.disabled =
+      true;
+
+
+    button.textContent =
+      "…";
+
+
+    try {
+
+      /* =====================================================
+         EXISTING CHAIN
+         ===================================================== */
+
+      if (id) {
+
+        const response =
+          await fetch(
+
+            `/api/chains/${encodeURIComponent(id)}/contributions`,
+
+            {
+
+              method:
+                "POST",
+
+              headers: {
+
+                "Content-Type":
+                  "application/json",
+
+                ...privateCodeHeaders()
+
+              },
+
+              body:
+                JSON.stringify({
+
+                  text,
+
+                  token:
+                    participantToken
+
+                })
+
+            }
+
+          );
+
+
+        if (!response.ok) {
+
+          const errorData =
+            await response
+              .json()
+              .catch(
+                () => ({})
+              );
+
+
+          throw new Error(
+
+            errorData.error ||
+            "Contribution failed."
+
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        const alreadyExists =
+          chain.some(
+            item =>
+
+              String(
+                item.id
+              ) ===
+
+              String(
+                data
+                  .contribution
+                  .id
+              )
+
+          );
+
+
+        if (!alreadyExists) {
+
+          chain.push(
+            data.contribution
+          );
+
+        }
+
+
+        shareUrl =
+          location.origin +
+          `/c/${id}`;
+
+      }
+
+
+      /* =====================================================
+         NEW CHAIN
+         ===================================================== */
+
+      else {
+
+        const response =
+          await fetch(
+            "/api/chains",
+            {
+
+              method:
+                "POST",
+
+              headers: {
+
+                "Content-Type":
+                  "application/json"
+
+              },
+
+              body:
+                JSON.stringify({
+
+                  text,
+
+                  prompt:
+                    selectedPrompt,
+
+                  token:
+                    participantToken,
+
+                  visibility:
+                    selectedVisibility
+
+                })
+
+            }
+          );
+
+
+        if (!response.ok) {
+
+          const errorData =
+            await response
+              .json()
+              .catch(
+                () => ({})
+              );
+
+
+          throw new Error(
+
+            errorData.error ||
+            "Chain creation failed."
+
+          );
+
+        }
+
+
+        const data =
+          await response.json();
+
+
+        id =
+          data.id;
+
+
+        currentContributorId =
+          data.contributorId ||
+          null;
+
+
+        /* PRIVATE CHAIN CODE */
+
+        if (
+          data.visibility ===
+            "private" &&
+          data.accessCode
+        ) {
+
+          chainAccessCode =
+            data.accessCode;
+
+
+          localStorage.setItem(
+            `passItOnAccessCode:${id}`,
+            chainAccessCode
+          );
+
+
+          toastMsg(
+            `🔒 Private chain · Code: ${data.accessCode}`
+          );
+
+        }
+
+
+        history.replaceState(
+          {},
+          "",
+          data.url
+        );
+
+
+        shareUrl =
+          location.origin +
+          data.url;
+
+
+        /* LOAD NEWLY CREATED CHAIN */
+
+        const chainResponse =
+          await fetch(
+
+            `/api/chains/${encodeURIComponent(id)}`,
+
+            {
+
+              headers:
+                privateCodeHeaders()
+
+            }
+
+          );
+
+
+        if (!chainResponse.ok) {
+
+          throw new Error();
+
+        }
+
+
+        const chainData =
+          await chainResponse
+            .json();
+
+
+        chain =
+          chainData
+            .contributions ||
+          [];
+
+
+        selectedPrompt =
+          chainData.prompt ||
+          selectedPrompt;
+
+
+        selectedVisibility =
+
+          chainData.visibility ===
+          "private"
+
+            ? "private"
+
+            : chainData.visibility ===
+              "link"
+
+              ? "link"
+
+              : "public";
+
+
+        let visibilityBadge =
+          document.querySelector(
+            "#chainVisibilityBadge"
+          );
+
+
+        if (!visibilityBadge) {
+
+          visibilityBadge =
+            document.createElement(
+              "div"
+            );
+
+
+          visibilityBadge.id =
+            "chainVisibilityBadge";
+
+
+          visibilityBadge.className =
+            "chain-visibility";
+
+
+          const promptBox =
+            document.querySelector(
+              "#promptBox"
+            );
+
+
+          if (promptBox) {
+
+            promptBox
+              .insertAdjacentElement(
+                "afterend",
+                visibilityBadge
+              );
+
+          }
+
+        }
+
+
+        visibilityBadge.textContent =
+
+          selectedVisibility ===
+          "private"
+
+            ? "🔒 Private"
+
+            : selectedVisibility ===
+              "link"
+
+              ? "🔗 Link-only"
+
+              : "🌎 Public";
+
+
+        promptText.textContent =
+          selectedPrompt;
+
+
+        promptSelector.style.display =
+          "none";
+
+
+        visibilitySelector.style.display =
+          "none";
+
+
+        connectLiveChain();
+
+      }
+
+
+      render();
+
+
+      message.value =
+        "";
+
+
+      counter.textContent =
+        "0 / 200";
+
+
+      showSpotlight();
+
+
+      if (
+        milestones[
+          chain.length
+        ] &&
+        chain.length >
+          oldCount
+      ) {
+
+        showMilestone(
+          chain.length
+        );
+
+      }
+
+
+      /*
+        Intentionally no
+        automatic sharing.
+      */
+
+    }
+
+
+    catch(error) {
+
+      console.error(
+        error
+      );
+
+
+      toastMsg(
+
+        error.message ||
+        "Something went wrong. Try again."
+
+      );
+
+    }
+
+
+    finally {
+
+      button.textContent =
+        "↗";
+
+
+      button.disabled =
+        !message.value
+          .trim();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+shareAgain.addEventListener(
+  "click",
+  shareChain
+);
+
+
+copyLink.addEventListener(
+  "click",
+  copyChain
+);
+
+
+shareComposer.addEventListener(
+  "click",
+  shareChain
+);
+
+
+/* =========================================================
+   MOBILE KEYBOARD / VISUAL VIEWPORT
+   ========================================================= */
+
+(function setupKeyboardHandling() {
+
+  if (
+    !window.visualViewport
+  ) {
+
+    return;
+
+  }
+
+
+  function keepComposerVisible() {
+
+    if (
+      document.activeElement !==
+      message
+    ) {
+
+      return;
+
+    }
+
+
+    requestAnimationFrame(
+      () => {
+
+        message.scrollIntoView({
+
+          behavior:
+            "smooth",
+
+          block:
+            "center"
+
+        });
+
+      }
+    );
+
+  }
+
+
+  message.addEventListener(
+    "focus",
+    () => {
+
+      setTimeout(
+        keepComposerVisible,
+        100
+      );
+
+
+      setTimeout(
+        keepComposerVisible,
+        300
+      );
+
+    }
+  );
+
+
+  window
+    .visualViewport
+    .addEventListener(
+      "resize",
+      () => {
+
+        if (
+          document.activeElement ===
+          message
+        ) {
+
+          setTimeout(
+            keepComposerVisible,
+            60
+          );
+
+        }
+
+      }
+    );
+
+})();
+
+
+/* =========================================================
+   CLEANUP
+   ========================================================= */
+
+window.addEventListener(
+  "beforeunload",
+  closeLiveChain
+);
+
+
+/* =========================================================
+   START
+   ========================================================= */
+
+load();
+
+</script>
+
+</body>
+
+</html>

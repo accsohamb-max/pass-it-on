@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#050608">
+<title>Discover — Pass It On.</title>
+
+<style>
+:root{
+  --bg:#050608;
+  --panel:#0a0d10;
+  --card:#0b0f12;
+  --card2:#0d1215;
+  --text:#f4f7f5;
+  --muted:#69747a;
+  --muted2:#465056;
+  --border:rgba(255,255,255,.075);
+  --green:#ff7a00;
+  --cyan:#00d9ff;
+  --glow:rgba(255,122,0,.12);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  min-height:100vh;
+  padding:20px;
+  background:
+    radial-gradient(circle at 50% -12%,rgba(0,217,255,.07),transparent 34%),
+    radial-gradient(circle at 10% 30%,rgba(255,122,0,.035),transparent 28%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  letter-spacing:.01em;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  opacity:.035;
+  background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px);
+  background-size:100% 4px;
+  mix-blend-mode:screen;
+}
+
+.app{
+  max-width:620px;
+  margin:auto;
+  padding:12px 0 70px;
+}
+
+/* TOP NAV */
+.top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:34px;
+}
+
+.logo{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:13px;
+  background:#fff;
+  color:#050608;
+  text-decoration:none;
+  font-weight:900;
+  font-size:20px;
+  box-shadow:0 0 28px rgba(255,255,255,.08);
+  transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.logo:hover{
+  transform:translateY(-1px);
+  box-shadow:0 0 34px rgba(255,122,0,.14);
+}
+
+.home{
+  color:var(--text);
+  text-decoration:none;
+  border:1px solid var(--border);
+  background:rgba(255,255,255,.025);
+  padding:10px 14px;
+  border-radius:11px;
+  font-size:11px;
+  font-weight:800;
+  transition:border-color .2s ease,background .2s ease;
+}
+
+.home:hover{
+  border-color:rgba(255,122,0,.3);
+  background:rgba(255,122,0,.05);
+}
+
+/* HEADER */
+header{margin-bottom:26px}
+
+.eyebrow{
+  color:var(--green);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.7px;
+  margin-bottom:10px;
+  text-transform:uppercase;
+}
+
+h1{
+  font-size:clamp(40px,10vw,58px);
+  letter-spacing:-3px;
+  line-height:.95;
+  margin-bottom:14px;
+}
+
+.subtitle{
+  color:var(--muted);
+  line-height:1.6;
+  max-width:450px;
+  font-size:14px;
+}
+
+/* DISCOVER STATUS */
+.discover-status{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin:22px 0 18px;
+  color:var(--muted);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+}
+
+.status-dot{
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 12px rgba(255,122,0,.75);
+}
+
+/* TABS */
+.tabs{
+  display:flex;
+  gap:7px;
+  margin-bottom:17px;
+  padding:4px;
+  width:max-content;
+  border:1px solid var(--border);
+  border-radius:13px;
+  background:rgba(255,255,255,.018);
+}
+
+.tab{
+  border:0;
+  padding:9px 13px;
+  border-radius:9px;
+  background:transparent;
+  color:var(--muted);
+  font-size:10px;
+  font-weight:900;
+  cursor:pointer;
+  transition:background .18s ease,color .18s ease;
+}
+
+.tab.active{
+  background:#f4f7f5;
+  color:#050608;
+}
+
+/* LIST */
+.list{
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+/* CHAIN CARD */
+.chain{
+  position:relative;
+  display:block;
+  overflow:hidden;
+  text-decoration:none;
+  color:var(--text);
+  padding:17px;
+  border-radius:16px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.018),transparent 60%),
+    var(--card);
+  border:1px solid var(--border);
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.chain::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:14px;
+  bottom:14px;
+  width:2px;
+  background:transparent;
+  transition:background .2s ease,box-shadow .2s ease;
+}
+
+.chain:hover{
+  transform:translateY(-2px);
+  border-color:rgba(255,122,0,.2);
+  box-shadow:0 12px 40px rgba(0,0,0,.25);
+}
+
+.chain:hover::before{
+  background:var(--green);
+  box-shadow:0 0 14px rgba(255,122,0,.35);
+}
+
+.chain-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:12px;
+}
+
+.prompt{
+  color:var(--muted);
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+
+.badges{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+
+.visibility{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:5px 7px;
+  border:1px solid rgba(255,122,0,.18);
+  border-radius:7px;
+  color:var(--green);
+  background:rgba(255,122,0,.045);
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.8px;
+}
+
+.visibility.private{
+  border-color:rgba(255,190,70,.22);
+  color:#ffc45c;
+  background:rgba(255,190,70,.055);
+}
+
+.chain.private{
+  border-color:rgba(255,190,70,.11);
+}
+
+.chain.private:hover{
+  border-color:rgba(255,190,70,.28);
+}
+
+.chain.private:hover::before{
+  background:#ffc45c;
+  box-shadow:0 0 14px rgba(255,190,70,.25);
+}
+
+.locked-preview{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  min-height:48px;
+  margin-bottom:15px;
+  padding:11px 12px;
+  border:1px solid rgba(255,190,70,.10);
+  border-radius:11px;
+  color:#a99a7d;
+  background:rgba(255,190,70,.025);
+  font-size:12px;
+  line-height:1.45;
+}
+
+.lock-icon{
+  font-size:17px;
+  flex:0 0 auto;
+}
+
+.number{
+  color:var(--text);
+  font-size:11px;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+.latest-label{
+  color:var(--muted2);
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+
+.preview{
+  font-size:16px;
+  line-height:1.5;
+  margin-bottom:15px;
+  word-break:break-word;
+}
+
+.bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  color:var(--muted);
+  font-size:9px;
+}
+
+.open{
+  color:var(--text);
+  font-weight:900;
+}
+
+.arrow{
+  color:var(--green);
+  margin-left:4px;
+}
+
+/* EMPTY / LOADING */
+.empty{
+  padding:44px 20px;
+  text-align:center;
+  border:1px dashed var(--border);
+  border-radius:17px;
+  color:var(--muted);
+  background:rgba(255,255,255,.012);
+}
+
+.empty-icon{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.loading{
+  text-align:center;
+  color:var(--muted);
+  padding:35px;
+  font-size:11px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  color:#3f484d;
+  font-size:9px;
+  letter-spacing:.5px;
+  margin-top:28px;
+}
+
+/* MOBILE */
+@media(max-width:450px){
+  body{padding:16px}
+  .app{padding-top:8px}
+  .top{margin-bottom:30px}
+  h1{letter-spacing:-2.5px}
+  .chain{padding:15px}
+  .preview{font-size:15px}
+  .visibility{font-size:7px}
+}
+
+
+/* =========================================================
+   DISCOVER — V0.4 ANONYMOUS VISUAL OVERHAUL
+   Visual only. Existing mechanics/JS remain untouched.
+   ========================================================= */
+
+:root{
+  --bg:#030405;
+  --panel:#07090b;
+  --card:#080b0d;
+  --card2:#0b0e11;
+  --text:#f5f5f3;
+  --muted:#646c72;
+  --muted2:#3e454b;
+  --border:rgba(255,255,255,.055);
+  --green:#ff7a00;
+  --cyan:#00d9ff;
+  --glow:rgba(255,122,0,.09);
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% -18%,rgba(255,255,255,.045),transparent 30%),
+    radial-gradient(circle at 10% 35%,rgba(255,122,0,.025),transparent 24%),
+    linear-gradient(180deg,#020304 0%,#050608 55%,#020304 100%);
+}
+
+body::before{
+  opacity:.055;
+  background-image:
+    linear-gradient(rgba(255,255,255,.32) 1px,transparent 1px);
+  background-size:100% 5px;
+}
+
+.app{
+  max-width:680px;
+  padding:18px 0 80px;
+}
+
+/* Top bar */
+.top{
+  margin-bottom:42px;
+}
+
+.logo{
+  background:#050608;
+  color:#f5f5f3;
+  border:1px solid rgba(255,122,0,.14);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,.02),
+    0 10px 30px rgba(0,0,0,.45);
+}
+
+.home{
+  border-color:rgba(255,255,255,.06);
+  background:rgba(255,255,255,.018);
+}
+
+.home:hover{
+  background:rgba(255,122,0,.045);
+  border-color:rgba(255,122,0,.20);
+}
+
+/* Header */
+h1{
+  font-size:clamp(48px,11vw,70px);
+  font-weight:900;
+  letter-spacing:-4px;
+  line-height:.9;
+  text-shadow:0 0 30px rgba(255,255,255,.045);
+}
+
+.subtitle{
+  color:#60686e;
+}
+
+/* Status */
+.discover-status{
+  color:#565e64;
+}
+
+.status-dot{
+  width:5px;
+  height:5px;
+  box-shadow:0 0 14px rgba(255,122,0,.65);
+}
+
+/* Tabs */
+.tabs{
+  border-color:rgba(255,255,255,.055);
+  background:rgba(255,255,255,.012);
+  border-radius:14px;
+}
+
+.tab{
+  color:#596168;
+}
+
+.tab.active{
+  background:#f3f3f0;
+  color:#050608;
+  box-shadow:0 4px 18px rgba(0,0,0,.25);
+}
+
+/* Chain cards */
+.chain{
+  border-radius:19px;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.018),transparent 42%),
+    rgba(7,10,12,.92);
+  border-color:rgba(255,255,255,.055);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.018),
+    0 18px 50px rgba(0,0,0,.20);
+}
+
+.chain:hover{
+  transform:translateY(-3px);
+  border-color:rgba(255,122,0,.20);
+  box-shadow:
+    0 18px 55px rgba(0,0,0,.38),
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.chain::before{
+  width:1px;
+  top:18px;
+  bottom:18px;
+}
+
+.chain:hover::before{
+  box-shadow:0 0 16px rgba(255,122,0,.38);
+}
+
+/* Metadata */
+.prompt{
+  color:#626b71;
+  letter-spacing:1.5px;
+}
+
+.visibility{
+  background:rgba(255,122,0,.035);
+  border-color:rgba(255,122,0,.14);
+  color:#ff922e;
+}
+
+.visibility.private{
+  color:#ffc45c;
+  border-color:rgba(255,190,70,.18);
+  background:rgba(255,190,70,.035);
+}
+
+.latest-label{
+  color:#41494f;
+  letter-spacing:1.5px;
+}
+
+.preview{
+  color:#e9ecea;
+  font-size:17px;
+  line-height:1.55;
+}
+
+.locked-preview{
+  background:rgba(255,190,70,.018);
+  border-color:rgba(255,190,70,.08);
+  color:#968b77;
+}
+
+.open{
+  color:#e7e9e8;
+}
+
+.arrow{
+  color:#ff7a00;
+}
+
+/* Empty / loading */
+.empty{
+  background:rgba(255,255,255,.008);
+  border-color:rgba(255,255,255,.06);
+}
+
+.loading{
+  color:#555e64;
+}
+
+footer{
+  color:#343b40;
+}
+
+/* Scrollbars */
+*{
+  scrollbar-width:thin;
+  scrollbar-color:#252a2e transparent;
+}
+
+*::-webkit-scrollbar{
+  width:6px;
+}
+
+*::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+*::-webkit-scrollbar-thumb{
+  background:#252a2e;
+  border-radius:999px;
+}
+
+@media(max-width:450px){
+  body{
+    padding:14px;
+  }
+
+  .app{
+    padding-top:7px;
+  }
+
+  h1{
+    font-size:50px;
+    letter-spacing:-3.2px;
+  }
+
+  .chain{
+    border-radius:18px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+<main class="app">
+
+  <div class="top">
+    <a href="/" class="logo">↗</a>
+    <a href="/" class="home">Start a chain</a>
+  </div>
+
+  <header>
+    <div class="eyebrow">PUBLIC CHAINS · LIVE DISCOVERY</div>
+    <h1>Discover.</h1>
+    <p class="subtitle">
+      See what people are passing on.
+      Find a chain that catches your attention
+      and add something to it.
+    </p>
+  </header>
+
+  <div class="discover-status">
+    <span class="status-dot"></span>
+    <span>Showing public + private chains</span>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" id="popularTab">🔥 Popular</button>
+    <button class="tab" id="newTab">✨ New</button>
+  </div>
+
+  <section id="list" class="list">
+    <div class="loading">Finding chains…</div>
+  </section>
+
+  <footer>
+    Public + private chains · Link-only chains stay hidden.
+  </footer>
+
+</main>
+
+<script>
+const list = document.querySelector("#list");
+const popularTab = document.querySelector("#popularTab");
+const newTab = document.querySelector("#newTab");
+
+let chains = [];
+let mode = "popular";
+
+function escapeHTML(text){
+  const div = document.createElement("div");
+  div.textContent = text || "";
+  return div.innerHTML;
+}
+
+function timeAgo(date){
+  const seconds = Math.floor(
+    (Date.now() - new Date(date).getTime()) / 1000
+  );
+
+  if(seconds < 10) return "just now";
+  if(seconds < 60) return `${seconds}s ago`;
+
+  const minutes = Math.floor(seconds / 60);
+  if(minutes < 60) return `${minutes}m ago`;
+
+  const hours = Math.floor(minutes / 60);
+  if(hours < 24) return `${hours}h ago`;
+
+  const days = Math.floor(hours / 24);
+  if(days < 30) return `${days}d ago`;
+
+  return `${Math.floor(days / 30)}mo ago`;
+}
+
+function sortChains(){
+  const sorted = [...chains];
+
+  if(mode === "popular"){
+    sorted.sort(
+      (a,b) => Number(b.count) - Number(a.count)
+    );
+  }else{
+    sorted.sort(
+      (a,b) =>
+        new Date(b.latestContribution || b.createdAt) -
+        new Date(a.latestContribution || a.createdAt)
+    );
+  }
+
+  return sorted;
+}
+
+function render(){
+  if(!chains.length){
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">🌱</div>
+        <div>No chains yet.</div>
+        <div style="margin-top:6px;font-size:11px">
+          Be the first to start one.
+        </div>
+      </div>
+    `;
+    return;
+  }
+
+  const sorted = sortChains();
+
+  list.innerHTML = sorted.map(chain => {
+
+    const isPrivate =
+      chain.visibility === "private" ||
+      chain.locked === true;
+
+    return `
+      <a
+        class="chain ${isPrivate ? "private" : ""}"
+        href="/c/${encodeURIComponent(chain.id)}"
+      >
+
+        <div class="chain-top">
+
+          <div class="prompt">
+            ${escapeHTML(chain.prompt)}
+          </div>
+
+          <div class="badges">
+
+            <span class="visibility ${isPrivate ? "private" : ""}">
+              ${isPrivate ? "🔒 PRIVATE" : "🌎 PUBLIC"}
+            </span>
+
+            <span class="number">
+              ${Number(chain.count)}
+              ${Number(chain.count) === 1
+                ? "contribution"
+                : "contributions"}
+            </span>
+
+          </div>
+
+        </div>
+
+        ${
+          isPrivate
+            ? `
+              <div class="latest-label">
+                PRIVATE CHAIN
+              </div>
+
+              <div class="locked-preview">
+                <span class="lock-icon">🔒</span>
+                <span>
+                  This chain is locked.
+                  Enter the access code to join.
+                </span>
+              </div>
+            `
+            : `
+              <div class="latest-label">
+                LATEST CONTRIBUTION
+              </div>
+
+              <div class="preview">
+                ${escapeHTML(
+                  chain.preview ||
+                  "Someone started this chain."
+                )}
+              </div>
+            `
+        }
+
+        <div class="bottom">
+
+          <span>
+            ${timeAgo(
+              chain.latestContribution ||
+              chain.createdAt
+            )}
+          </span>
+
+          <span class="open">
+            ${isPrivate
+              ? `Enter code <span class="arrow">→</span>`
+              : `Open chain <span class="arrow">→</span>`}
+          </span>
+
+        </div>
+
+      </a>
+    `;
+  }).join("");
+}
+
+async function load(){
+  try{
+    const response = await fetch("/api/discover");
+
+    if(!response.ok){
+      throw new Error();
+    }
+
+    const data = await response.json();
+
+    chains = Array.isArray(data.chains)
+      ? data.chains.filter(
+          chain =>
+            !chain.visibility ||
+            chain.visibility === "public" ||
+            chain.visibility === "private" ||
+            chain.locked === true
+        )
+      : [];
+
+    render();
+
+  }catch{
+    list.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">⚠️</div>
+        Couldn't load the chains.
+        <div style="margin-top:6px;font-size:11px">
+          Refresh the page and try again.
+        </div>
+      </div>
+    `;
+  }
+}
+
+popularTab.addEventListener("click", () => {
+  mode = "popular";
+  popularTab.classList.add("active");
+  newTab.classList.remove("active");
+  render();
+});
+
+newTab.addEventListener("click", () => {
+  mode = "new";
+  newTab.classList.add("active");
+  popularTab.classList.remove("active");
+  render();
+});
+
+load();
+</script>
+
+</body>
+</html>
